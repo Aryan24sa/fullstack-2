@@ -1,0 +1,2 @@
+import {useDispatch,useSelector} from 'react-redux';import {useState} from 'react';import {addPost} from './store';
+export default function App(){const[d,setD]=useState('');const p=useSelector(s=>s.posts);const dis=useDispatch();return<div style={{padding:20}}><h2>Redux Toolkit Demo</h2><input value={d} onChange={e=>setD(e.target.value)}/><button onClick={()=>{dis(addPost(d));setD('')}}>Add</button><ul>{p.map(x=><li key={x.id}>{x.title}</li>)}</ul></div>}

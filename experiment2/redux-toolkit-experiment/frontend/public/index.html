@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#5b3df0" />
+  <meta name="description" content="Redux Toolkit Experiment" />
+  <title>Redux Toolkit Experiment</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-start: #2c1e91;
+      --bg-end: #06103d;
+      --accent: #7c5cff;
+      --accent-soft: #a78bfa;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --text-primary: #f5f4ff;
+      --text-muted: #b6b2d9;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at 20% 20%, #4527c4 0%, transparent 45%),
+                  radial-gradient(circle at 80% 80%, #0891b2 0%, transparent 45%),
+                  linear-gradient(160deg, var(--bg-start), var(--bg-end));
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    #root {
+      min-height: 100vh;
+    }
+    .loader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 0.8s ease forwards;
+      animation-delay: 2s;
+    }
+    .loader-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      padding: 48px 56px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+    .circle {
+      width: 56px;
+      height: 56px;
+      border: 4px solid rgba(255, 255, 255, 0.15);
+      border-top: 4px solid var(--accent-soft);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    .loader-text {
+      text-align: center;
+    }
+    .loader-text h2 {
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 0.4px;
+    }
+    .loader-text p {
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 13px;
+      letter-spacing: 0.3px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    footer {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      padding: 0 16px;
+      pointer-events: none;
+    }
+    footer span {
+      padding: 6px 14px;
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      background: var(--card-bg);
+    }
+  </style>
+</head>
+<body>
+  <noscript>
+    You need to enable JavaScript to run this application.
+  </noscript>
+  <div class="loader">
+    <div class="loader-card">
+      <div class="circle"></div>
+      <div class="loader-text">
+        <h2>Redux Toolkit Experiment</h2>
+        <p>Loading application…</p>
+      </div>
+    </div>
+  </div>
+  <div id="root"></div>
+  <footer><span>Built with React + Redux Toolkit</span></footer>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#12251f" />
+<meta name="description" content="Post Scheduler — Interactive Calendar Experiment" />
+<title>Post Scheduler — Calendar</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React (CDN, no build step needed) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+  <!--
+    We compile app.jsx manually (instead of using <script type="text/babel" src="...">)
+    and force the "classic" JSX runtime explicitly. Newer Babel Standalone releases
+    default to the "automatic" runtime, which injects an ES `import` statement — and
+    that throws "Cannot use import statement outside a module" in a plain <script>.
+    Pinning runtime:"classic" here keeps this working regardless of which Babel
+    version the CDN happens to serve.
+  -->
+  <script>
+    fetch("app.jsx")
+      .then((r) => r.text())
+      .then((code) => {
+        const output = Babel.transform(code, {
+          presets: [["react", { runtime: "classic" }]],
+        }).code;
+        const script = document.createElement("script");
+        script.text = output;
+        document.body.appendChild(script);
+      })
+      .catch((err) => {
+        document.getElementById("root").innerHTML =
+          '<p style="color:#f4f1e6;padding:24px;font-family:sans-serif">' +
+          "Failed to load app.jsx — make sure you're serving this folder " +
+          "over http(s), not opening it directly as a file. (" + err + ")</p>";
+      });
+  </script>
+</body>
+</html>

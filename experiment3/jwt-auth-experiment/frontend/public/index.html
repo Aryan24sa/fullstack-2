@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1d4ed8" />
+    <meta name="description" content="JWT Authentication Experiment" />
+    <title>JWT Authentication System</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-start: #1e2a78;
+            --bg-end: #0b1130;
+            --accent: #60a5fa;
+            --accent-soft: #93c5fd;
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --card-border: rgba(255, 255, 255, 0.14);
+            --text-primary: #f4f6ff;
+            --text-muted: #aab2d8;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 15% 15%, #3345c9 0%, transparent 45%),
+                        radial-gradient(circle at 85% 85%, #6d28d9 0%, transparent 45%),
+                        linear-gradient(160deg, var(--bg-start), var(--bg-end));
+            overflow: hidden;
+        }
+        #root {
+            min-height: 100vh;
+        }
+        /* Background Circles */
+        .circle1 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,.06);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+            filter: blur(10px);
+        }
+        .circle2 {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: rgba(255,255,255,.05);
+            border-radius: 50%;
+            bottom: -150px;
+            right: -120px;
+            filter: blur(20px);
+        }
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: disappear 0.8s ease forwards;
+            animation-delay: 2.2s;
+        }
+        .loader-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            padding: 52px 60px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        .lock {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: rgba(96, 165, 250, 0.14);
+            border: 1px solid rgba(147, 197, 253, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulse 1.6s ease-in-out infinite;
+        }
+        .lock i {
+            font-size: 32px;
+            color: var(--accent-soft);
+        }
+        h2 {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 21px;
+            letter-spacing: 0.5px;
+        }
+        p {
+            color: var(--text-muted);
+            font-size: 13px;
+            letter-spacing: 0.4px;
+        }
+        footer {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: .5px;
+            color: var(--text-muted);
+            padding: 0 16px;
+        }
+        footer span {
+            padding: 6px 14px;
+            border: 1px solid var(--card-border);
+            border-radius: 999px;
+            background: var(--card-bg);
+        }
+        @keyframes pulse {
+            0% { transform: scale(.92); box-shadow: 0 0 0 0 rgba(96,165,250,.25); }
+            50% { transform: scale(1.04); box-shadow: 0 0 0 10px rgba(96,165,250,0); }
+            100% { transform: scale(.92); box-shadow: 0 0 0 0 rgba(96,165,250,0); }
+        }
+        @keyframes disappear {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <noscript>
+        JavaScript must be enabled to run this application.
+    </noscript>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="loader">
+        <div class="loader-card">
+            <div class="lock">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <h2>JWT Authentication</h2>
+            <p>Secure Login • Token Validation • Session Management</p>
+        </div>
+    </div>
+    <div id="root"></div>
+    <footer><span>React • Node.js • JWT Authentication Experiment</span></footer>
+</body>
+</html>

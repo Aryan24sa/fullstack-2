@@ -1,0 +1,1 @@
+export default function(){return <div style={{padding:20}}><h2>JWT Authentication Demo</h2><p>Replace with full app.</p></div>}
